@@ -14,7 +14,7 @@ export default function Steppers ({ max, unit, step, value, onIncrement, onDecre
                 <Entypo name='minus' size={30} color={purple} />
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.iosBtn, {borderTopLeftRadius: 0, borderBottomLeftRadius: 0, borderLftWidth: 0}]}
+              style={[styles.iosBtn, {borderTopLeftRadius: 0, borderBottomLeftRadius: 0, borderLeftWidth: 0}]}
               onPress={onIncrement}>
                 <Entypo name='plus' size={30} color={purple} />
             </TouchableOpacity>
