@@ -12,9 +12,13 @@ import { timeToString, getDailyReminderValue } from "../utils/helpers"
 import { fetchCalendarResults } from "../utils/api"
 import { Agenda } from "react-native-calendars"
 import { white } from "../utils/colors"
-import MetricCard from './MetricCard'
+import MetricCard from "./MetricCard"
+import AppLoading from "expo-app-loading"
 
 class History extends Component {
+	state = {
+		ready: false,
+	}
 	componentDidMount() {
 		const { dispatch } = this.props
 
@@ -55,6 +59,11 @@ class History extends Component {
 	}
 	render() {
 		const { entries } = this.props
+		const { ready } = this.state
+
+		if (ready === false) {
+			return <AppLoading />
+		}
 
 		return (
 			<Agenda
