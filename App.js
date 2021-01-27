@@ -5,6 +5,7 @@ import { createStore } from "redux"
 import { Provider } from "react-redux"
 import reducer from "./reducers"
 import History from './components/History'
+import { createBottomTabNavigator } from 'react-navigation'
 
 export default class App extends React.Component {
 	render() {
