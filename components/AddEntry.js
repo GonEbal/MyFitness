@@ -19,7 +19,7 @@ import TextButton from "./TextButton"
 import { submitEntry, removeEntry } from "../utils/api"
 import { connect } from "react-redux"
 import { addEntry } from "../actions"
-import { purple, white } from "../utils/colors"
+import { white } from "../utils/colors"
 
 function SubmitBtn({ onPress }) {
 	return (
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	iosSubmitBtn: {
-		backgroundColor: purple,
+		backgroundColor: "#00BBF2",
 		padding: 10,
 		borderRadius: 7,
 		height: 45,
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
 		marginRight: 40,
 	},
 	AndroidSubmitBtn: {
-		backgroundColor: purple,
+		backgroundColor: "#00BBF2",
 		padding: 10,
 		paddingLeft: 30,
 		paddingRight: 30,

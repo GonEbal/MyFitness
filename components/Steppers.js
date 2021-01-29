@@ -1,7 +1,7 @@
 import React from 'react'
 import { Platform, View, TouchableOpacity, Text, StyleSheet } from 'react-native'
 import { FontAwesome, Entypo } from '@expo/vector-icons'
-import { purple, gray, white } from '../utils/colors'
+import { gray, white } from '../utils/colors'
 
 export default function Steppers ({ max, unit, step, value, onIncrement, onDecrement }) {
   return (
@@ -11,12 +11,12 @@ export default function Steppers ({ max, unit, step, value, onIncrement, onDecre
             <TouchableOpacity
               style={[styles.iosBtn, {borderTopRightRadius: 0, borderBottomRightRadius: 0}]}
               onPress={onDecrement}>
-                <Entypo name='minus' size={30} color={purple} />
+                <Entypo name='minus' size={30} color={"#00BBF2"} />
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.iosBtn, {borderTopLeftRadius: 0, borderBottomLeftRadius: 0, borderLeftWidth: 0}]}
               onPress={onIncrement}>
-                <Entypo name='plus' size={30} color={purple} />
+                <Entypo name='plus' size={30} color={"#00BBF2"} />
             </TouchableOpacity>
           </View>
         : <View style={{flexDirection: 'row'}}>
@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
   },
   androidBtn: {
     margin: 5,
-    backgroundColor: purple,
+    backgroundColor: "#00BBF2",
     padding: 10,
     borderRadius: 2,
   },
   iosBtn: {
     backgroundColor: white,
-    borderColor: purple,
+    borderColor: "#00BBF2",
     borderWidth: 1,
     borderRadius: 3,
     padding: 5,
