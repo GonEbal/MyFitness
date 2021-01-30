@@ -5,6 +5,7 @@ import {
 	StyleSheet,
 	Platform,
 	TouchableOpacity,
+	ScrollView,
 } from "react-native"
 import { connect } from "react-redux"
 import { receiveEntries, addEntry } from "../actions"
@@ -12,13 +13,16 @@ import { timeToString, getDailyReminderValue } from "../utils/helpers"
 import { fetchCalendarResults } from "../utils/api"
 import { Agenda } from "react-native-calendars"
 import { white } from "../utils/colors"
+import DateHeader from "./DateHeader"
 import MetricCard from "./MetricCard"
 import AppLoading from "expo-app-loading"
 
 class History extends Component {
 	state = {
 		ready: false,
+		selectedDate: timeToString(),
 	}
+
 	componentDidMount() {
 		const { dispatch } = this.props
 
@@ -28,35 +32,58 @@ class History extends Component {
 				if (!entries[timeToString()]) {
 					dispatch(
 						addEntry({
-							[timeToString()]: getDailyReminderValue(),
+							[timeToString()]: [getDailyReminderValue()],
 						})
 					)
 				}
 			})
 			.then(() => this.setState(() => ({ ready: true })))
 	}
-	renderItem = ({ today, ...metrics }, formattedDate, key) => (
+
+	renderItem = ({ today, ...metrics }, firstItemInDay) => (
 		<View style={styles.item}>
 			{today ? (
 				<View>
 					<Text style={styles.noDataText}>{today}</Text>
 				</View>
 			) : (
-				<TouchableOpacity onPress={() => console.log("Pressed!")}>
+				<TouchableOpacity
+					onPress={() =>
+						this.props.navigation.navigate("EntryDetail", {
+							entryId: this.state.selectedDate,
+						})
+					}
+				>
 					<MetricCard metrics={metrics} />
 				</TouchableOpacity>
 			)}
 		</View>
 	)
-	renderEmptyDate(formattedDate) {
+
+	onDayPress = (day) => {
+		this.setState((curr) => ({
+			selectedDate: day.dateString,
+		}))
+	}
+
+	onDayChange = (day) => {
+		this.setState({
+			selectedDate: day.dateString,
+		})
+	}
+
+	renderEmptyDate(date) {
+		const formattedDate = date.toString("MMMM d, yyyy")
 		return (
 			<View style={styles.item}>
+				<DateHeader date={formattedDate} />
 				<Text style={styles.noDataText}>
 					You didn't log any data on this day.
 				</Text>
 			</View>
 		)
 	}
+
 	render() {
 		const { entries } = this.props
 		const { ready } = this.state
@@ -68,7 +95,11 @@ class History extends Component {
 		return (
 			<Agenda
 				items={entries}
-				renderItem={this.renderItem}
+				onDayPress={this.onDayPress}
+				onDayChange={this.onDayChange}
+				renderItem={(item, firstItemInDay) =>
+					this.renderItem(item, firstItemInDay)
+				}
 				renderEmptyDate={this.renderEmptyDate}
 			/>
 		)
