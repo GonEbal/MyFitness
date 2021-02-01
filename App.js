@@ -13,7 +13,8 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { FontAwesome, Ionicons } from "@expo/vector-icons"
 import Constants from "expo-constants"
 import EntryDetail from "./components/EntryDetail"
-import Live from './components/Live'
+import Live from "./components/Live"
+import { setLocalNotification } from "./utils/helpers"
 
 function MyStatusBar({ backgroundColor, ...props }) {
 	return (
@@ -94,6 +95,9 @@ const MainNav = () => (
 )
 
 export default class App extends React.Component {
+	componentDidMount() {
+		setLocalNotification()
+	}
 	render() {
 		return (
 			<Provider store={createStore(reducer)}>
