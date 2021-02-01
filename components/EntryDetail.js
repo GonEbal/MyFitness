@@ -38,17 +38,16 @@ class EntryDetail extends Component {
 		return nextProps.metrics.length !== 0 && !nextProps.metrics[0].today
 	}
 
-	render() {
-		const { entryId } = this.props.route.params
-		return (
-			<View style={styles.container}>
-				<MetricCard metrics={this.props.metrics[0]} />
-				<TextButton onPress={this.reset} style={{ margin: 20 }}>
-					RESET
-				</TextButton>
-			</View>
-		)
-	}
+  render() {
+    return (
+      <View style={styles.container}>
+        <MetricCard metrics={this.props.metrics[0]} />
+        <TextButton onPress={this.reset} style={{ margin: 20 }}>
+          RESET
+        </TextButton>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

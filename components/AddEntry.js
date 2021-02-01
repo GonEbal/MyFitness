@@ -83,7 +83,7 @@ class AddEntry extends Component {
 
 		this.setState(() => ({ run: 0, bike: 0, swim: 0, sleep: 0, eat: 0 }))
 
-		// Navigate to home
+		this.toHome()
 
 		submitEntry({ key, entry })
 
@@ -98,9 +98,14 @@ class AddEntry extends Component {
 			})
 		)
 
-		//Route to Home
+		this.toHome()
 
 		removeEntry(key)
+	}
+	toHome = () => {
+		this.props.navigation.dispatch(
+			NavigationActions.back({ key: "AddEntry" })
+		)
 	}
 	render() {
 		const metaInfo = getMetricMetaInfo()
@@ -108,7 +113,11 @@ class AddEntry extends Component {
 			return (
 				<View style={styles.center}>
 					<Ionicons
-						name={Platform.OS === "ios" ? "ios-happy-outline" : "md-happy"}
+						name={
+							Platform.OS === "ios"
+								? "ios-happy-outline"
+								: "md-happy"
+						}
 						size={100}
 					/>
 					<Text>You already logged your information for today.</Text>

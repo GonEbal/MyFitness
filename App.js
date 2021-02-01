@@ -13,6 +13,8 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { FontAwesome, Ionicons } from "@expo/vector-icons"
 import Constants from "expo-constants"
 import EntryDetail from "./components/EntryDetail"
+import Live from "./components/Live"
+import { setLocalNotification } from "./utils/helpers"
 
 function MyStatusBar({ backgroundColor, ...props }) {
 	return (
@@ -43,6 +45,10 @@ function MyTabs() {
 						iconName = focused
 							? "add-circle"
 							: "add-circle-outline"
+					} else if (route.name === "Live") {
+						iconName = focused
+							? "ios-speedometer"
+							: "ios-speedometer-outline"
 					}
 					return <Ionicons name={iconName} size={30} color={color} />
 				},
@@ -54,6 +60,7 @@ function MyTabs() {
 		>
 			<Tabs.Screen name="History" component={History} />
 			<Tabs.Screen name="AddEntry" component={AddEntry} />
+			<Tabs.Screen name="Live" component={Live} />
 		</Tabs.Navigator>
 	)
 }
@@ -88,6 +95,9 @@ const MainNav = () => (
 )
 
 export default class App extends React.Component {
+	componentDidMount() {
+		setLocalNotification()
+	}
 	render() {
 		return (
 			<Provider store={createStore(reducer)}>
