@@ -37,8 +37,6 @@ class EntryDetail extends Component {
 
 
   render() {
-    const { entryId } = this.props.route.params;
-    this.setTitle(entryId);
     return (
       <View style={styles.container}>
         <MetricCard metrics={this.props.metrics[0]} />
