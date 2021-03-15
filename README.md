@@ -15,6 +15,8 @@
   </a>
 </p>
 
+![gif#1](https://media1.giphy.com/media/bZ5i4GjDnmoFzpojtI/giphy.gif)
+
 ## 🚀 How to use
 
 - Install packages with `yarn` or `npm install`.
