@@ -15,7 +15,7 @@
   </a>
 </p>
 
-![gif#1](https://media1.giphy.com/media/bZ5i4GjDnmoFzpojtI/giphy.gif)
+![gif#1](https://media1.giphy.com/media/7LKmiubhAKFD2ohuoz/giphy.gif)
 
 ## 🚀 How to use
 
