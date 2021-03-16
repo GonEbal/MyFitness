@@ -1,4 +1,4 @@
-# My Universal React Project
+# MyFitness React App
 
 <p>
   <!-- iOS -->
